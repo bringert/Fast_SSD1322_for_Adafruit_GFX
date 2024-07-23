@@ -267,13 +267,13 @@ void Adafruit_SSD1322::display(void) {
     return;
   }
 
-  int16_t first_dirty_row = min(HEIGHT - 1, window_y1);
-  int16_t last_dirty_row = max(0, window_y2);
+  int16_t first_dirty_row = min((int16_t)(HEIGHT - 1), (int16_t)window_y1);
+  int16_t last_dirty_row = max((int16_t)0, (int16_t)window_y2);
 
   // On a 128-pixel display, each hardware column contains 2 bytes = 2 pixels
   // So writes must be 2-byte aligned
-  int16_t first_dirty_col = min(WIDTH, 2*(window_x1/2));
-  int16_t last_dirty_col = max(0, 2*((window_x2+1)/2)-1);
+  int16_t first_dirty_col = min((int16_t)WIDTH, (int16_t)(2*(window_x1/2)));
+  int16_t last_dirty_col = max((int16_t)0, (int16_t)(2*((window_x2+1)/2)-1));
 
   uint8_t HW_FIRST_ROW = 0;
   uint8_t hw_row_start = HW_FIRST_ROW + first_dirty_row;
